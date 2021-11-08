@@ -17,7 +17,7 @@ public class Main {
         boolean finished = false;
 
         while (!finished) {
-            String newTopping = addTopping(scanner);
+            String newTopping = addTopping(scanner, toppings);
             if (!newTopping.equals("")) {
                 toppings.add(newTopping);
             } else {
@@ -27,10 +27,23 @@ public class Main {
         return toppings;
     }
 
-    public static String addTopping(Scanner scanner) {
+    public static String addTopping(Scanner scanner, ArrayList toppings) {
         System.out.println("Type what topping you want, just hit enter if you're done:");
+        String input = scanner.next();
 
+        if (checkForExistingTopping(toppings, input`))) {
+            System.out.println("You've already added " + input + ". Please add something else - you can't have too much of a good thing!");
+        }
         return scanner.next();
+    }
+
+    public static boolean checkForExistingTopping(ArrayList toppings, String toppingInQuestion) {
+        for (Object topping:toppings.toArray()) {
+            if (toppingInQuestion.equalsIgnoreCase(topping.toString())) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public static int choosePizza(Scanner scanner) {
