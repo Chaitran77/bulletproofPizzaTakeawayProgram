@@ -45,11 +45,13 @@ public class Main {
 
         if (!input.equals("end")) {
             if (!checkTopping(toppings, input)) {
-                addTopping(scanner, toppings);
+                return addTopping(scanner, toppings);
+            } else {
+                return input;
             }
-            return input;
+        } else {
+            return "done";
         }
-        return "done";
     }
 
     public static boolean checkTopping(ArrayList toppings, String toppingInQuestion) {
